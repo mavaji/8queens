@@ -10,16 +10,16 @@ var
 function promise(i: integer): boolean;
 var
     k: integer;
-    switch: boolean;
+    result: boolean;
 begin
     k := 1;
-    switch := true;
-    while( (k < i) and (switch = true) ) do
+    result := true;
+    while( (k < i) and (result = true) ) do
     begin
-        if( (col[i] = col[k]) or (abs(col[i] - col[k]) = abs(i - k) ) ) then switch := false;
+        if( (col[i] = col[k]) or (abs(col[i] - col[k]) = abs(i - k) ) ) then result := false;
         k := k + 1;
     end;
-    promise := switch;
+    promise := result;
 end;
 
 procedure queens(i: integer);
