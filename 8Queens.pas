@@ -2,10 +2,10 @@
  @version 1.0}
 program _8queens;
 const
-    n= 8;
+    columnCount= 8;
 var
-    col: array[1..n] of integer;
-    c: integer;
+    columns: array[1..columnCount] of integer;
+    answerCount: integer;
 
 function promise(i: integer): boolean;
 var
@@ -14,11 +14,13 @@ var
 begin
     k := 1;
     result := true;
+
     while( (k < i) and (result = true) ) do
     begin
-        if( (col[i] = col[k]) or (abs(col[i] - col[k]) = abs(i - k) ) ) then result := false;
+        if( (columns[i] = columns[k]) or (abs(columns[i] - columns[k]) = abs(i - k) ) ) then result := false;
         k := k + 1;
     end;
+
     promise := result;
 end;
 
@@ -28,23 +30,23 @@ var
 begin
     if( promise(i) = true ) then
     begin
-        if( i = n ) then
+        if( i = columnCount ) then
         begin
-            write('Answer Number (',c,') is: ');
-            c := c + 1;
-            for k:=1 to n do write('(', k, ',' , col[k],') ');
+            write('Answer Number [',answerCount,'] is: ');
+            answerCount := answerCount + 1;
+            for k:=1 to columnCount do write('(', k, ',' , columns[k],') ');
             writeln;
         end
         else
-            for j:=1 to n do
+            for j:=1 to columnCount do
             begin
-                col[i + 1] := j;
+                columns[i + 1] := j;
                 queens(i + 1);
             end;
     end;
 end;
 
 begin
-    c := 1;
+    answerCount := 1;
     queens(0);
 end.
