@@ -1,5 +1,4 @@
-{@author Vahid Mavaji
- @version 1.0}
+{@author Vahid Mavaji 1999}
 program _8queens;
 const
     columnCount= 8;
